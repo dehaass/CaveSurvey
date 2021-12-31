@@ -116,11 +116,11 @@ void Station::setStation(int ID, double U, double D, double L, double R){
 // (re)position 'this' station based off the Path and it's errors
 void Station::weightedAve( std::vector<double> Path ){
 
-	cout << "Before Weighted Ave:\n";
-	this->print();
-	cout << "Path:\n";
-	cout << "x= " << Path[0] << " y= " << Path[1] << " z= " << Path[2] << '\n';
-	cout << "ex= " << Path[3] << " ey= " << Path[4] << " ez= " << Path[5] << '\n';
+//	cout << "Before Weighted Ave:\n";
+//	this->print();
+//	cout << "Path:\n";
+//	cout << "x= " << Path[0] << " y= " << Path[1] << " z= " << Path[2] << '\n';
+//	cout << "ex= " << Path[3] << " ey= " << Path[4] << " ez= " << Path[5] << '\n';
 	
 	// Final error values
 	double exF, eyF, ezF;
@@ -139,8 +139,8 @@ void Station::weightedAve( std::vector<double> Path ){
 	z = ( (z/ez) + (Path[2]/Path[5]) ) * ezF;
 
 	this->setError( exF, eyF, ezF );
-	cout << "After Weighted Ave:\n";
-	this->print();
+	//cout << "After Weighted Ave:\n";
+	//this->print();
 
 }// weightedAve
 
@@ -233,3 +233,14 @@ int Station::readID(){
 	return id;
 }// readID
 
+double Station::getX(){
+	return x;
+}// getX
+
+double Station::getY(){
+	return y;
+}// getY
+
+double Station::getZ(){
+	return z;
+}// getZ

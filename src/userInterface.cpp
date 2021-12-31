@@ -22,7 +22,11 @@ int menu(){
 			case 'E':
 				return -1;
 			case 'g':
-			case 'G': return( giver() );
+			case 'G': 
+				return( giver() );
+			case 's':
+			case 'S':
+				return( stnLoc() );
 			default:
 				cout << "Invalid input, dummy.\n";
 				break;
@@ -56,9 +60,9 @@ extern "C"{
 
         // Populate the station relative positions
         //ROOT_STN->printStations();
-        ROOT_SHOT->printShots();
+        //ROOT_SHOT->printShots();
         ROOT_SHOT->populatePos();
-        ROOT_STN->printStations();
+        //ROOT_STN->printStations();
 
         // populate the map data
         caveMap = new svgMap;
@@ -72,11 +76,44 @@ extern "C"{
         plotCave(cavePlot);
         cavePlot.close();
 
-        return -1;
+        return 0;
 
     }// giver
 }
 
+extern "C"{
+    int stnLoc(){
+
+        std::ifstream surveyFile;
+        //std::ofstream cavePlot;
+
+        std::string survey = "./aux/RKVSC_Survey_Notes.csv";
+
+        surveyFile.open(survey);
+        // Check for sucessful file opening
+        if( !surveyFile.good() ){
+            cout << "surveyFile is not good";
+            return 1;
+        }
+        populateStations(surveyFile);
+        surveyFile.close();
+
+        surveyFile.open(survey);
+        populateShots(surveyFile);
+        surveyFile.close();
+
+        // Populate the station relative positions
+        //ROOT_STN->printStations();
+        //ROOT_SHOT->printShots();
+        ROOT_SHOT->populatePos();
+        //ROOT_STN->printStations();
+
+        // populate the map data
+
+        return 0;
+
+    }// stnloc
+}
 // Read survey from '*.csv' file
 int fromFile(){
 

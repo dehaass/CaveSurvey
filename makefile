@@ -30,7 +30,7 @@ DEP_RELEASE =
 OUT_RELEASE = bin/CaveSurvey
 
 
-OBJ_RELEASE = $(OBJDIR_RELEASE)/src/Shot.o $(OBJDIR_RELEASE)/src/Station.o $(OBJDIR_RELEASE)/src/dataFun.o $(OBJDIR_RELEASE)/src/main.o $(OBJDIR_RELEASE)/src/surveyPlot.o $(OBJDIR_RELEASE)/src/svgMap.o $(OBJDIR_RELEASE)/src/userInterface.o
+OBJ_RELEASE = $(OBJDIR_RELEASE)/src/Shot.o $(OBJDIR_RELEASE)/src/Station.o $(OBJDIR_RELEASE)/src/dataFun.o $(OBJDIR_RELEASE)/src/main.o $(OBJDIR_RELEASE)/src/surveyPlot.o $(OBJDIR_RELEASE)/src/svgMap.o $(OBJDIR_RELEASE)/src/userInterface.o $(OBJDIR_RELEASE)/src/blenderOutputs.o
 
 all:  release
 
@@ -68,10 +68,12 @@ $(OBJDIR_RELEASE)/src/svgMap.o: src/svgMap.cpp
 $(OBJDIR_RELEASE)/src/userInterface.o: src/userInterface.cpp
 	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/userInterface.cpp -o $(OBJDIR_RELEASE)/src/userInterface.o
 
+$(OBJDIR_RELEASE)/src/blenderOutputs.o: src/blenderOutputs.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/blenderOutputs.cpp -o $(OBJDIR_RELEASE)/src/blenderOutputs.o
+
 clean_release: 
 	rm -f $(OBJ_RELEASE) $(OUT_RELEASE)
 	rm -rf bin
 	rm -rf $(OBJDIR_RELEASE)/src
 
 .PHONY:  before_release after_release clean_release
-

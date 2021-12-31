@@ -79,6 +79,10 @@ class Station{
 		// Return the station ID
 		int readID();
 
+		double getX();
+		double getY();
+		double getZ();
+
 }; // Station
 
 // Create global variable. Pointer to ROOT_STN

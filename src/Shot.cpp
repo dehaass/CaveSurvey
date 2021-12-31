@@ -315,10 +315,10 @@ void Shot::findPaths( std::vector<double> Path, Station* rootStn, bool reverse )
 	for( i=0; i<branches.size(); i++ ){
 		reverse = (branches[i]->toStn == currStn) ? TRUE : FALSE;
 
-		debugOut( "From: "
-			+ std::to_string( reverse == TRUE ? branches[i]->toStn->readID() : branches[i]->fromStn->readID() )
-		        + " To: "
-			+ std::to_string( reverse == FALSE ? branches[i]->toStn->readID() : branches[i]->fromStn->readID() ) );
+	//	debugOut( "From: "
+	//		+ std::to_string( reverse == TRUE ? branches[i]->toStn->readID() : branches[i]->fromStn->readID() )
+	//	        + " To: "
+	//		+ std::to_string( reverse == FALSE ? branches[i]->toStn->readID() : branches[i]->fromStn->readID() ) );
 		branches[i]->findPaths(Path, rootStn, reverse);
 	}// for all branches off node
 
@@ -387,6 +387,10 @@ void Shot::fromPos(double* X, double* Y, double* Z){
 
 void Shot::debugOut( std::string str ){
 
+#ifdef DEBUG
 	cout << '\n' << str << '\n';
+#else
+	return;
+#endif
 
 }// debugOut

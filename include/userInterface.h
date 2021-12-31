@@ -18,6 +18,10 @@ extern "C"{
     int giver();
 }
 
+extern "C"{
+    int stnLoc();
+}
+
 // Read survey from '*.csv' file
 int fromFile();
 
