@@ -39,7 +39,7 @@ extern "C"{
         std::ifstream surveyFile;
         std::ofstream cavePlot;
 
-        std::string survey = "./RKVSC_Survey_Notes.csv";
+        std::string survey = "./aux/RKVSC_Survey_Notes.csv";
 
         surveyFile.open(survey);
         // Check for sucessful file opening

@@ -2,7 +2,7 @@
 
 import ctypes
 
-_libPHD=ctypes.cdll.LoadLibrary('./_PHD.so')
+_libPHD=ctypes.cdll.LoadLibrary('./obj/_PHD.so')
 
 _libPHD.giver()
 

@@ -18,6 +18,17 @@ LIBDIR =
 LIB = 
 LDFLAGS = 
 
+INC_DEBUG = $(INC) -Iinclude
+CFLAGS_DEBUG = $(CFLAGS) -std=c++11 -g -fPIC
+RESINC_DEBUG = $(RESINC)
+RCFLAGS_DEBUG = $(RCFLAGS)
+LIBDIR_DEBUG = $(LIBDIR)
+LIB_DEBUG = $(LIB)
+LDFLAGS_DEBUG = $(LDFLAGS)
+OBJDIR_DEBUG = obj/Debug
+DEP_DEBUG = 
+OUT_DEBUG = bin/Debug/CaveSurvey
+
 INC_RELEASE = $(INC) -Iinclude
 CFLAGS_RELEASE = $(CFLAGS) -fPIC -O2
 RESINC_RELEASE = $(RESINC)
@@ -25,19 +36,57 @@ RCFLAGS_RELEASE = $(RCFLAGS)
 LIBDIR_RELEASE = $(LIBDIR)
 LIB_RELEASE = $(LIB)
 LDFLAGS_RELEASE = $(LDFLAGS) -s
-OBJDIR_RELEASE = obj/
+OBJDIR_RELEASE = obj/Release
 DEP_RELEASE = 
-OUT_RELEASE = bin/CaveSurvey
+OUT_RELEASE = bin/Release/CaveSurvey
 
+OBJ_DEBUG = $(OBJDIR_DEBUG)/src/Shot.o $(OBJDIR_DEBUG)/src/Station.o $(OBJDIR_DEBUG)/src/dataFun.o $(OBJDIR_DEBUG)/src/main.o $(OBJDIR_DEBUG)/src/surveyPlot.o $(OBJDIR_DEBUG)/src/svgMap.o $(OBJDIR_DEBUG)/src/userInterface.o
 
 OBJ_RELEASE = $(OBJDIR_RELEASE)/src/Shot.o $(OBJDIR_RELEASE)/src/Station.o $(OBJDIR_RELEASE)/src/dataFun.o $(OBJDIR_RELEASE)/src/main.o $(OBJDIR_RELEASE)/src/surveyPlot.o $(OBJDIR_RELEASE)/src/svgMap.o $(OBJDIR_RELEASE)/src/userInterface.o
 
-all:  release
+all: debug release
 
-clean:  clean_release
+clean: clean_debug clean_release
+
+before_debug: 
+	test -d bin/Debug || mkdir -p bin/Debug
+	test -d $(OBJDIR_DEBUG)/src || mkdir -p $(OBJDIR_DEBUG)/src
+
+after_debug: 
+
+debug: before_debug out_debug after_debug
+
+out_debug: before_debug $(OBJ_DEBUG) $(DEP_DEBUG)
+	$(LD) $(LIBDIR_DEBUG) -o $(OUT_DEBUG) $(OBJ_DEBUG)  $(LDFLAGS_DEBUG) $(LIB_DEBUG)
+
+$(OBJDIR_DEBUG)/src/Shot.o: src/Shot.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/Shot.cpp -o $(OBJDIR_DEBUG)/src/Shot.o
+
+$(OBJDIR_DEBUG)/src/Station.o: src/Station.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/Station.cpp -o $(OBJDIR_DEBUG)/src/Station.o
+
+$(OBJDIR_DEBUG)/src/dataFun.o: src/dataFun.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/dataFun.cpp -o $(OBJDIR_DEBUG)/src/dataFun.o
+
+$(OBJDIR_DEBUG)/src/main.o: src/main.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/main.cpp -o $(OBJDIR_DEBUG)/src/main.o
+
+$(OBJDIR_DEBUG)/src/surveyPlot.o: src/surveyPlot.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/surveyPlot.cpp -o $(OBJDIR_DEBUG)/src/surveyPlot.o
+
+$(OBJDIR_DEBUG)/src/svgMap.o: src/svgMap.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/svgMap.cpp -o $(OBJDIR_DEBUG)/src/svgMap.o
+
+$(OBJDIR_DEBUG)/src/userInterface.o: src/userInterface.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/userInterface.cpp -o $(OBJDIR_DEBUG)/src/userInterface.o
+
+clean_debug: 
+	rm -f $(OBJ_DEBUG) $(OUT_DEBUG)
+	rm -rf bin/Debug
+	rm -rf $(OBJDIR_DEBUG)/src
 
 before_release: 
-	test -d bin/ || mkdir -p bin/
+	test -d bin/Release || mkdir -p bin/Release
 	test -d $(OBJDIR_RELEASE)/src || mkdir -p $(OBJDIR_RELEASE)/src
 
 after_release: 
@@ -70,8 +119,8 @@ $(OBJDIR_RELEASE)/src/userInterface.o: src/userInterface.cpp
 
 clean_release: 
 	rm -f $(OBJ_RELEASE) $(OUT_RELEASE)
-	rm -rf bin
+	rm -rf bin/Release
 	rm -rf $(OBJDIR_RELEASE)/src
 
-.PHONY:  before_release after_release clean_release
+.PHONY: before_debug after_debug clean_debug before_release after_release clean_release
 
