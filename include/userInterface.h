@@ -14,7 +14,9 @@ using std::cin;
 int menu();
 
 // Debugging program. Bypasses user input
-int giver();
+extern "C"{
+    int giver();
+}
 
 // Read survey from '*.csv' file
 int fromFile();

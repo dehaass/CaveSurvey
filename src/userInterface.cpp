@@ -33,47 +33,49 @@ return 0;
 }// menu
 
 // Debugging program. Bypass user input
-int giver(){
+extern "C"{
+    int giver(){
 
-	std::ifstream surveyFile;
-	std::ofstream cavePlot;
+        std::ifstream surveyFile;
+        std::ofstream cavePlot;
 
-	std::string survey = "RKVSC_Survey_Notes.csv";
+        std::string survey = "./RKVSC_Survey_Notes.csv";
 
-	surveyFile.open(survey);
-	// Check for sucessful file opening
-	if( !surveyFile.good() ){
-		cout << "surveyFile is not good";
-		return 1;
-	}
-	populateStations(surveyFile);
-	surveyFile.close();
+        surveyFile.open(survey);
+        // Check for sucessful file opening
+        if( !surveyFile.good() ){
+            cout << "surveyFile is not good";
+            return 1;
+        }
+        populateStations(surveyFile);
+        surveyFile.close();
 
-	surveyFile.open(survey);
-	populateShots(surveyFile);
-	surveyFile.close();
+        surveyFile.open(survey);
+        populateShots(surveyFile);
+        surveyFile.close();
 
-	// Populate the station relative positions
-	//ROOT_STN->printStations();
-	ROOT_SHOT->printShots();
-	ROOT_SHOT->populatePos();
-	ROOT_STN->printStations();
+        // Populate the station relative positions
+        //ROOT_STN->printStations();
+        ROOT_SHOT->printShots();
+        ROOT_SHOT->populatePos();
+        ROOT_STN->printStations();
 
-	// populate the map data
-	caveMap = new svgMap;
-	caveMap->mapName = "Radio Killed the Video Survey Cave";
+        // populate the map data
+        caveMap = new svgMap;
+        caveMap->mapName = "Radio Killed the Video Survey Cave";
 
-	cavePlot.open( "RKVSC.svg", std::ofstream::out | std::ofstream::trunc);
-	if( !cavePlot.good() ){
-		cout << "cavePlot is not good!";
-		return 1;
-	}
-	plotCave(cavePlot);
-	cavePlot.close();
+        cavePlot.open( "RKVSC.svg", std::ofstream::out | std::ofstream::trunc);
+        if( !cavePlot.good() ){
+            cout << "cavePlot is not good!";
+            return 1;
+        }
+        plotCave(cavePlot);
+        cavePlot.close();
 
-	return -1;
+        return -1;
 
-}// giver
+    }// giver
+}
 
 // Read survey from '*.csv' file
 int fromFile(){
