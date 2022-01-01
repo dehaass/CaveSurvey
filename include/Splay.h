@@ -1,0 +1,50 @@
+#ifndef SPLAY_H
+#define SPLAY_H
+
+#include <iostream>
+//#include <array>
+//#include <vector>
+#include "Station.h"
+#include "Shot.h"
+#include "dataFun.h"
+
+class Splay{
+
+    friend class Station;
+    friend class Shot;
+
+    protected:
+
+
+// Origin station of the shot
+        Station *fromStn;
+
+// These are the relative cartesian coordinates wrt fromStn
+        double dx, dy, dz;
+    public:
+
+    Splay* nextSplay;
+
+    //Constructor
+    Splay();
+
+    Splay* createNext( int, int, double, double, double );
+
+    //Returns the fromStn
+    Station* getFromStn();
+
+    //Returns the fromStn ID
+    unsigned int getFromID();
+
+    // reads the relative cartesian coordinates from the shot
+    void readDeltas(double*, double*, double*);
+
+    // Calulates the absolute cartesian coordinates of the shot
+    void calcAbsCoords(double*, double*, double*);
+
+
+};//end class Splay
+
+extern Splay* ROOT_SPLAY;
+
+#endif // SPLAY_H

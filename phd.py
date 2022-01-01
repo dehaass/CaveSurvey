@@ -13,7 +13,8 @@ import sys
 #sys.path.append('/home/stuart/Documents/CaveSurvey/')
 
 #_libPHD=ctypes.cdll.LoadLibrary('./obj/_PHD.so')
-_libPHD=ctypes.cdll.LoadLibrary('/home/stuart/Documents/CaveSurvey/obj/_PHD.so')
+#_libPHD=ctypes.cdll.LoadLibrary('/home/stuart/Documents/CaveSurvey/obj/_PHD.so')
+_libPHD=ctypes.cdll.LoadLibrary('/home/stuart/Documents/CaveSurvey/bin/_PHD_Lib.so')
 
 _doublepp = ndpointer(dtype=np.uintp, ndim=1, flags='C')
 _uintpp = ndpointer(dtype=np.uintp, ndim=1, flags='C')
@@ -87,4 +88,4 @@ if __name__ == '__main__':
     stnList = StationLocations()
     #print(stnList[1])
     shotList = ShotList()
-    print(shotList)
+    #print(shotList)

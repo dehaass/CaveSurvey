@@ -104,8 +104,8 @@ extern "C"{
 
         // Populate the station relative positions
         ROOT_SHOT->populatePos();
-        ROOT_STN->printStations();
-        ROOT_SHOT->printShots();
+        //ROOT_STN->printStations();
+        //ROOT_SHOT->printShots();
         //ROOT_STN->printStations();
 
         // populate the map data
