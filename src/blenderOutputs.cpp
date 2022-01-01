@@ -42,12 +42,13 @@ extern "C"{
 
 extern "C"{
     // Populates a shot list with from - to station IDs
-    void ShotList(int **shotList, const unsigned int numShots){
+    void ShotList(unsigned int **shotList, const unsigned int numShots){
         Shot* currShot = ROOT_SHOT;
         for(unsigned int i = 0; i < numShots; i++){
             shotList[i][0] = currShot->readFromStnID();
             shotList[i][1] = currShot->readToStnID();
             currShot = currShot->nextShot;
+            //cout << "ShotList: " << shotList[i][0] << " " << shotList[i][1] << "\n";
             if(currShot == nullptr){
                 break;
             }
