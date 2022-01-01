@@ -69,3 +69,22 @@ extern "C"{
         return num;
     }
 }
+
+extern "C"{
+    //Creates mesh data for cave walls from udlr station data and shots
+    void tunnelMesh(unsigned int **verts, unsigned int **edges, unsigned int **faces, const unsigned int numShots){
+        Shot* currShot = ROOT_SHOT;
+        for(unsigned int i = 0; i < numShots; i++){
+
+// Doesn't work. TODO
+            verts[i][0] = currShot->readFromStn()->getX();
+            verts[i][1] = currShot->readFromStn()->getY();
+            verts[i][2] = currShot->readFromStn()->getZ();
+
+            currShot = currShot->nextShot;
+            if(currShot == nullptr){
+                break;
+            }
+        }
+    }
+}
