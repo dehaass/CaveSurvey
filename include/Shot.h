@@ -17,12 +17,13 @@ class Shot{
 
 	// They're friends!!
 	friend class Station;
-        friend class svgMap;
+    friend class svgMap;
 
 	protected:
 		// Pointers to the stations involved in this shot
 		Station *fromStn, *toStn;
-		// These are the relative cartesian coordinated of fromStn -> toStn 
+
+		// These are the relative cartesian coordinates and errors of fromStn -> toStn 
 		double dx, dy, dz;
 		double ex, ey, ez;
 	public:
@@ -70,6 +71,12 @@ class Shot{
 
 		// Returns the 'toStn'
 		Station* readToStn();	
+
+		// Returns the 'fromStn' ID
+		unsigned int readFromStnID();
+
+		// Returns the 'toStn' ID
+		unsigned int readToStnID();
 
 		// Reads relative cartesian coordinates of shot 
 		void readDeltas(double*, double*, double*);

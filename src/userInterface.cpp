@@ -26,7 +26,7 @@ int menu(){
 				return( giver() );
 			case 's':
 			case 'S':
-				return( stnLoc() );
+				return( processSurvey() );
 			default:
 				cout << "Invalid input, dummy.\n";
 				break;
@@ -82,7 +82,7 @@ extern "C"{
 }
 
 extern "C"{
-    int stnLoc(){
+    int processSurvey(){
 
         std::ifstream surveyFile;
         //std::ofstream cavePlot;
@@ -103,9 +103,9 @@ extern "C"{
         surveyFile.close();
 
         // Populate the station relative positions
+        ROOT_SHOT->populatePos();
         //ROOT_STN->printStations();
         //ROOT_SHOT->printShots();
-        ROOT_SHOT->populatePos();
         //ROOT_STN->printStations();
 
         // populate the map data

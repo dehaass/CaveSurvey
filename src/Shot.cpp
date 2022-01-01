@@ -356,15 +356,25 @@ void Shot::metrics(double *hor, double *vert, unsigned int *numShot){
 	}// while
 }// metrics
 
-// Returns the 'fromStn'
+// Returns the 'fromStn' pointer
 Station* Shot::readFromStn(){
 return fromStn;
 }// readFrom
 
-// Returns the 'toStn'
+// Returns the 'toStn' pointer
 Station* Shot::readToStn(){
 return toStn;
 } // readTo
+
+// Returns the 'fromStn' ID
+unsigned int Shot::readFromStnID(){
+return fromStn->readID();
+}// readFromID
+
+// Returns the 'toStn' ID
+unsigned int Shot::readToStnID(){
+return toStn->readID();
+} // readToID
 
 // Reads relative cartesian coordinates of shot
 void Shot::readDeltas(double* X, double* Y, double* Z){

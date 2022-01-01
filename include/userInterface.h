@@ -19,7 +19,7 @@ extern "C"{
 }
 
 extern "C"{
-    int stnLoc();
+    int processSurvey();
 }
 
 // Read survey from '*.csv' file
