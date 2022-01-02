@@ -43,8 +43,6 @@ Station* Station::createNext(int ID, std::string U, std::string D, std::string L
 		return this;
 	}
 
-
-
 	// If this is the next sequential station, skip the other steps
 	if( this->id == (ID-1) ){
 		// if this is the last station in the list, or the next station is non-sequential

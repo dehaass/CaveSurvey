@@ -70,4 +70,44 @@ int populateShots(std::ifstream& surveyFile){
 }// populateShots
 
 
+// Read through therion output file and populate stations, shots, and splays
+int populateData(std::ifstream& surveyFile){
+
+	std::string dumb, fromID, toID, dist, bear, clino, id, u, d, l, r;
+	
+	Station* currStn = ROOT_STN;
+	Shot* currShot = ROOT_SHOT;
+	Splay* currSplay = ROOT_SPLAY;
+
+
+	return 0;
+}// populateData
+
+std::vector<Splay> populateSplaysFromUDLR(){
+	Station* currStn = ROOT_STN;
+	Shot* currShot = ROOT_SHOT;
+	Shot* tempShot = nullptr;
+
+	std::vector<Splay> splays;
+
+	while(currStn != nullptr){
+		while(currShot != nullptr){
+			if(currShot->readFromStn() == currStn){
+				tempShot = currShot;
+				break;
+			}else if(currShot->readToStn() == currStn){
+				tempShot = currShot;
+			}
+			currShot = currShot->nextShot;
+		}
+		if(tempShot != nullptr){
+			Splay temp_splay = Splay(currShot, currStn);
+			splays.push_back(temp_splay);
+			tempShot = nullptr;
+		}
+		currStn = currStn->nextStation;
+	}
+
+	return splays;
+}
 

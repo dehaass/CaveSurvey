@@ -404,3 +404,8 @@ void Shot::debugOut( std::string str ){
 #endif
 
 }// debugOut
+
+// Perform a depth first recursive search of the shot tree and return a vector of all shots
+std::vector<Shot> generateShotList(Shot* currShot){
+
+}

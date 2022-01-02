@@ -8,6 +8,9 @@
 #include "Shot.h"
 #include "dataFun.h"
 
+class Station;
+class Shot;
+
 class Splay{
 
     friend class Station;
@@ -23,12 +26,18 @@ class Splay{
         double dx, dy, dz;
     public:
 
-    Splay* nextSplay;
+// Let's not do a linked list. That's dumb
+    //Splay* nextSplay;
 
     //Constructor
     Splay();
 
-    Splay* createNext( int, int, double, double, double );
+    Splay(Shot *shot, Station* stn);
+
+    // Prints 'this' splay. Used for debugging
+    void print();
+
+    //Splay* createNextFromSpay( int, double, double, double );
 
     //Returns the fromStn
     Station* getFromStn();

@@ -22,6 +22,10 @@ extern "C"{
     int processSurvey();
 }
 
+extern "C"{
+    int processTherionOutput();
+}
+
 // Read survey from '*.csv' file
 int fromFile();
 

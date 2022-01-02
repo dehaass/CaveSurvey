@@ -12,6 +12,11 @@ SHAREDLIB   := _PHD_Lib.so
 
 all: $(BIN)/$(SHAREDLIB) #$(BIN)/$(EXECUTABLE)
 
+lib: $(BIN)/$(SHAREDLIB)
+
+exec: $(BIN)/$(EXECUTABLE)
+
+
 run: clean all
 	clear
 	./$(BIN)/$(EXECUTABLE)

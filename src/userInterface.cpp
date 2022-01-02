@@ -96,10 +96,42 @@ extern "C"{
             return 1;
         }
         populateStations(surveyFile);
+		// Need to close and reopen to reset the file pointer
         surveyFile.close();
-
         surveyFile.open(survey);
         populateShots(surveyFile);
+        surveyFile.close();
+
+        // Populate the station relative positions
+        ROOT_SHOT->populatePos();
+        ROOT_STN->printStations();
+        ROOT_SHOT->printShots();
+        //ROOT_STN->printStations();
+		populateSplaysFromUDLR();
+
+        // populate the map data
+
+        return 0;
+
+    }// stnloc
+}
+
+extern "C"{
+    int processTherionOutput(){
+
+        std::ifstream surveyFile;
+        //std::ofstream cavePlot;
+
+        std::string survey = "./aux/Friend_Elevator_th_output.csv";
+
+        surveyFile.open(survey);
+        // Check for sucessful file opening
+        if( !surveyFile.good() ){
+            cout << "surveyFile is not good";
+            return 1;
+        }
+        populateData(surveyFile);
+		// Need to close and reopen to reset the file pointer
         surveyFile.close();
 
         // Populate the station relative positions
@@ -108,12 +140,11 @@ extern "C"{
         //ROOT_SHOT->printShots();
         //ROOT_STN->printStations();
 
-        // populate the map data
-
         return 0;
 
-    }// stnloc
+    }// populateData
 }
+
 // Read survey from '*.csv' file
 int fromFile(){
 
