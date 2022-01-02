@@ -3,12 +3,15 @@
 
 
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <string>
 #include <cmath>
 #include <vector>
 #include "Shot.h"
 #include "dataFun.h"
+
+class Splay;
 
 class Station{
 	
@@ -17,19 +20,23 @@ class Station{
     friend class svgMap;
 
     protected:
-    		// Station ID. Could probably be unsigned
-                int  id;
+		// Station ID. Could probably be unsigned
+		int  id;
 		// Station wall locations
 		double up, down, left, right;
 		//Station position relative to ROOT_STN
-	        double x, y, z;
+	    double x, y, z;
 		// Position error relative to root
 		// eT is total error
 		double ex, ey, ez, eT;
 
+// Vector containing all the splays originating from this station
+		std::vector<Splay*> splayList;
+
 	public:
 		//Pointer to next station in linked list
 		Station* nextStation;
+
 
 		//Constructor
 		Station();
@@ -82,6 +89,15 @@ class Station{
 		double getX();
 		double getY();
 		double getZ();
+
+// Returns the up, down, left, right station data
+		void readUDLR(double*, double*, double*, double*);
+
+// Pushes a splay to the splayList for this station
+		void pushSplay(Splay*);
+
+		// Return a pointer to the splays vector
+		std::vector<Splay*>* getSplayList();
 
 }; // Station
 

@@ -18,7 +18,18 @@ Station::Station(){
 void Station::print(){
 	//cout << "ID= " << id << " U= " << up << " D= " << down << " L= " << left << " R= " << right << '\n';
 	cout << "\nID= " << id << " x= " << x << " y= " << y << " z= " << z << "\nex= " << ex << " ey= " << ey << " ez= " << ez << " eT= " << eT << '\n';
+
+	if(splayList.size() == 0){
+		cout << "No splays\n";
+	}
+	else{
+		cout << "Splay List:\n";
+		for(int i = 0; i < splayList.size(); i++){
+			splayList[i]->print();
+		}
+	}
 }
+
 
 // Prints all stations after 'this' in linked list
 // Use ROOT_STN to print all stations
@@ -242,3 +253,19 @@ double Station::getY(){
 double Station::getZ(){
 	return z;
 }// getZ
+
+void Station::readUDLR(double* U, double* D, double* L, double* R){
+	*U = up;
+	*D = down;
+	*L = left;
+	*R = right;
+}// readUDLR
+
+void Station::pushSplay(Splay* splay){
+	splayList.push_back(splay);
+}
+
+// Return a pointer to the splays vector
+std::vector<Splay*>* Station::getSplayList(){
+	return &splayList;
+}// getSplayList

@@ -106,7 +106,7 @@ Shot* Shot::find(int fromID, int toID){
 
 	// Made it to the end of the linked list. Return last shot
 	return prevShot;
-}// findŝ
+}// find
 
 // Finds the next node during a Depth-First Search of the station tree
 std::vector<Shot*> Shot::findBranches(bool reverse){

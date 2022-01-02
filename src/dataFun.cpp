@@ -83,7 +83,7 @@ int populateData(std::ifstream& surveyFile){
 	return 0;
 }// populateData
 
-std::vector<Splay> populateSplaysFromUDLR(){
+void populateSplaysFromUDLR(){
 	Station* currStn = ROOT_STN;
 	Shot* currShot = ROOT_SHOT;
 	Shot* tempFromShot = nullptr;
@@ -117,16 +117,59 @@ std::vector<Splay> populateSplaysFromUDLR(){
 		currShot = ROOT_SHOT;
 	}
 
-	return splays;
 }
 
-// Uses a station and a from and to shot to convert UDLR data into splay shots
+// Uses a station and a from or to shot to convert UDLR data into splay shots
+// Left and right station data has to be oriented perpendicular to the cave passage
+// Conventionally, left and right distances are taken while facing forward to the next station
+// Up and down distances are conventionally pure z-axis distances so don't need to be oriented
 void splaysFromUDLR(std::vector<Splay>& splays, Station *stn, Shot *fromShot, Shot *toShot){
-	// insert Math here. TODO
-	double x, y, z = 0;
+/*          |
+ *    -x +y | +x +y
+ *     -----|-----
+ *    -x -y | +x -y
+ *          |
+ */
 
-	Splay temp_splay = Splay(x, y, z, stn);
-	splays.push_back(temp_splay);
+	double u, d, l, r;
+	double xs, ys, zs = 0; // Shot deltas
 
+// Default direction is forward (from shot to to shot)
+// Some stations don't have from shots so we use the to shot's direction
+// For instance, the last shot on a branch won't have any from shots
+	if(fromShot == nullptr){
+		toShot->readDeltas(&xs, &ys, &zs);
+		xs *= -1;
+		ys *= -1;
+	}else{
+		fromShot->readDeltas(&xs, &ys, &zs);
+	}
+
+	stn->readUDLR(&u, &d, &l, &r);
+
+// Push the up splay
+	stn->pushSplay(new Splay(0.0, 0.0, u));
+// Push the down splay
+	stn->pushSplay(new Splay(0.0, 0.0, (-1.0)*d));
+
+	// Normalize x,y vector of shot
+	double Shotmag = sqrt(xs*xs + ys*ys);
+
+// When rotating vectors by 90 degrees, the x and y components are swapped.
+// (x,y) = (-y,x) is a +90 degree rotation
+// (x,y) = (y,-x) is a -90 degree rotation
+
+// calculate left splay
+// rotate by +90 and scale by left
+	//x = l*(-1.0)*ys/Shotmag;
+	//y = l*xs/Shotmag;
+	//stn->pushSplay(&Splay(x, y, 0));
+	//stn->pushSplay(&Splay(l*(-1.0)*ys/Shotmag, l*xs/Shotmag, 0));
+	stn->pushSplay(new Splay(l*(-1.0)*ys/Shotmag, l*xs/Shotmag, 0));
+
+// calculate right splay
+// rotate by -90 and scale by right
+	//stn->pushSplay(&Splay(l*ys/Shotmag, l*(-1.0)*xs/Shotmag, 0));
+	stn->pushSplay(new Splay(l*ys/Shotmag, l*(-1.0)*xs/Shotmag, 0));
 
 }

@@ -20,7 +20,7 @@ class Splay{
 
 
 // Origin station of the shot
-        Station *fromStn;
+        //Station *fromStn;
 
 // These are the relative cartesian coordinates wrt fromStn
         double dx, dy, dz;
@@ -32,18 +32,12 @@ class Splay{
     //Constructor
     Splay();
 
-    Splay(double x, double y, double z, Station *stn);
+    Splay(double x, double y, double z);
 
     // Prints 'this' splay. Used for debugging
     void print();
 
     //Splay* createNextFromSpay( int, double, double, double );
-
-    //Returns the fromStn
-    Station* getFromStn();
-
-    //Returns the fromStn ID
-    unsigned int getFromID();
 
     // reads the relative cartesian coordinates from the shot
     void readDeltas(double*, double*, double*);

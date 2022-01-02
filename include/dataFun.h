@@ -33,7 +33,7 @@ int populateShots(std::ifstream&);
 // Read through therion output file and populate stations, shots, and splays
 int populateData(std::ifstream&);
 
-std::vector<Splay> populateSplaysFromUDLR();
+void populateSplaysFromUDLR();
 
 void splaysFromUDLR(std::vector<Splay>& splays, Station *stn, Shot *fromShot, Shot *toShot);
 #endif // DATAFUN_H
