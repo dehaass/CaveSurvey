@@ -12,13 +12,16 @@ Splay::Splay(){
 }
 
 // Constructor. Initializes from UDLR values
-Splay::Splay(Shot *shot, Station *stn){
+Splay::Splay(double x, double y, double z, Station *stn){
     //Splay* prevSplay;
-    fromStn = nullptr;
-    dx = dy = dz = 0;
+    //fromStn = nullptr;
+    //dx = dy = dz = 0;
+    dx = x;
+    dy = y;
+    dz = z;
+    fromStn = stn;
     //cout << "Station ID: " << stn->readID() << '\n';
-    stn->print();
-    // if first splay, populate 'this'. ROOT_SPLAY->id is initilized to 0 before being passed.
+    //stn->print();
 }
 
 // Prints 'this' splay. Used for debugging

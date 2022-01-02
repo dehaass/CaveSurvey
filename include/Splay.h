@@ -32,7 +32,7 @@ class Splay{
     //Constructor
     Splay();
 
-    Splay(Shot *shot, Station* stn);
+    Splay(double x, double y, double z, Station *stn);
 
     // Prints 'this' splay. Used for debugging
     void print();

@@ -15,6 +15,8 @@ const bool TRUE=1;
 const bool FALSE=0;
 
 class Splay;
+class Station;
+class Shot;
 
 // Convert a string to double with error checking
 double strToF(std::string);
@@ -33,4 +35,5 @@ int populateData(std::ifstream&);
 
 std::vector<Splay> populateSplaysFromUDLR();
 
+void splaysFromUDLR(std::vector<Splay>& splays, Station *stn, Shot *fromShot, Shot *toShot);
 #endif // DATAFUN_H

@@ -86,28 +86,47 @@ int populateData(std::ifstream& surveyFile){
 std::vector<Splay> populateSplaysFromUDLR(){
 	Station* currStn = ROOT_STN;
 	Shot* currShot = ROOT_SHOT;
-	Shot* tempShot = nullptr;
+	Shot* tempFromShot = nullptr;
+	Shot* tempToShot = nullptr;
 
 	std::vector<Splay> splays;
 
+// Go through every station and find the first from and to shots that are connected to it.
 	while(currStn != nullptr){
 		while(currShot != nullptr){
-			if(currShot->readFromStn() == currStn){
-				tempShot = currShot;
+			if(currShot->readFromStn() == currStn && tempFromShot == nullptr){
+				tempFromShot = currShot;
+				//break;
+			}else if(currShot->readToStn() == currStn && tempToShot == nullptr){
+				tempToShot = currShot;
+			}
+			if(tempFromShot != nullptr && tempToShot != nullptr){
 				break;
-			}else if(currShot->readToStn() == currStn){
-				tempShot = currShot;
 			}
 			currShot = currShot->nextShot;
 		}
-		if(tempShot != nullptr){
-			Splay temp_splay = Splay(currShot, currStn);
-			splays.push_back(temp_splay);
-			tempShot = nullptr;
+
+		if(tempFromShot != nullptr || tempToShot != nullptr){
+			splaysFromUDLR(splays, currStn, tempFromShot, tempToShot);
 		}
+		currStn->print();
+		tempFromShot = nullptr;
+		tempToShot = nullptr;
+
 		currStn = currStn->nextStation;
+		currShot = ROOT_SHOT;
 	}
 
 	return splays;
 }
 
+// Uses a station and a from and to shot to convert UDLR data into splay shots
+void splaysFromUDLR(std::vector<Splay>& splays, Station *stn, Shot *fromShot, Shot *toShot){
+	// insert Math here. TODO
+	double x, y, z = 0;
+
+	Splay temp_splay = Splay(x, y, z, stn);
+	splays.push_back(temp_splay);
+
+
+}
