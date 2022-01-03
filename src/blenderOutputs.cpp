@@ -77,6 +77,7 @@ extern "C"{
         Station* currStation = ROOT_STN;
         std::vector<Splay*>* splayList;
         double x, y, z, dx, dy, dz;
+        double fuck, you = 0;
         std::vector<Splay*> tempSplayList;
 
         unsigned int i = 0;
@@ -86,12 +87,10 @@ extern "C"{
         while( currStation != nullptr){
             currStation->print();
             currStation->readPos(&x, &y, &z);
-            //cout << "It's gonna break here\n";
             verts[i][0] = x;
             verts[i][1] = y;
             verts[i][2] = z;
             i++;
-            if(i >= sizeofVerts) break;
 
             splayList = currStation->getSplayList();
             tempSplayList = *splayList;
@@ -99,19 +98,21 @@ extern "C"{
                 //tempSplayList = *splayList;
                 tempSplayList[j]->readDeltas(&dx, &dy, &dz);
                 verts[i][0] = x + dx;
+                fuck = x + dx;
                 verts[i][1] = y + dy;
                 verts[i][2] = z + dz;
                 edges[k][0] = i-1-j;
                 edges[k][1] = i;
                 k++;
-                if(k >= sizeofEdges) return;
                 i++;
-                if(i >= sizeofVerts) return;
-
+                cout << "splay absolute location: " << verts[i][0] << " " << verts[i][1] << " " << verts[i][2] << "\n";
+                cout << "FUcks: " << fuck << " you:" << you << "\n";
+                cout << "splay edge: " << edges[k][0] << " " << edges[k][1] << "\n";
             }
 
             currStation = currStation->nextStation;
         }
+        int g = 0;
     }
 }
 
@@ -138,6 +139,5 @@ void testSplayEdgeGenerator(){
             edges[i][j] = 0;
         }
     }
-    cout << verts[0][0] << "\n";
     splayEdgesGenerator(verts, numVerts, edges, numEdges);
 }

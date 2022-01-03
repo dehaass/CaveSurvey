@@ -108,6 +108,8 @@ extern "C"{
         //ROOT_SHOT->printShots();
         //ROOT_STN->printStations();
 		populateSplaysFromUDLR();
+       // ROOT_SHOT->printShots();
+        //ROOT_STN->printStations();
 
 		testSplayEdgeGenerator();
         // populate the map data

@@ -1,5 +1,6 @@
-make all --dry-run --keep-going --print-directory
+make all --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/stuart/Documents/CaveSurvey'
+g++ -std=c++17 -ggdb -fPIC -O2 -Iinclude src/Shot.cpp src/Splay.cpp src/Station.cpp src/blenderOutputs.cpp src/dataFun.cpp src/main.cpp src/surveyPlot.cpp src/svgMap.cpp src/userInterface.cpp -o bin/_PHD_Lib.so  -shared
 g++ -std=c++17 -ggdb -fPIC -O2 -Iinclude src/Shot.cpp src/Splay.cpp src/Station.cpp src/blenderOutputs.cpp src/dataFun.cpp src/main.cpp src/surveyPlot.cpp src/svgMap.cpp src/userInterface.cpp -o bin/CaveSurvey 
 make: Leaving directory '/home/stuart/Documents/CaveSurvey'
  

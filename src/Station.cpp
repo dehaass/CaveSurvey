@@ -267,10 +267,5 @@ void Station::pushSplay(Splay* splay){
 
 // Return a pointer to the splays vector
 std::vector<Splay*>* Station::getSplayList(){
-	cout << "Splay List:\n";
-	for(unsigned int i = 0; i < splayList.size(); i++){
-		cout << "Splay " << i << ":\n";
-		splayList[i]->print();
-	}
 	return &splayList;
 }// getSplayList
