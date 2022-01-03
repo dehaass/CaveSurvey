@@ -25,6 +25,8 @@ using std::cout;
 
 int main(){
 
+	processSurvey();
+
 	// Run the menu program and save its return value
 	int menuStatus = menu();
 

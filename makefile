@@ -10,7 +10,7 @@ EXECUTABLE  := CaveSurvey
 SHAREDLIB   := _PHD_Lib.so
 
 
-all: $(BIN)/$(SHAREDLIB) #$(BIN)/$(EXECUTABLE)
+all: $(BIN)/$(SHAREDLIB) $(BIN)/$(EXECUTABLE)
 
 lib: $(BIN)/$(SHAREDLIB)
 

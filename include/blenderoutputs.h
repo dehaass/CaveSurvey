@@ -25,4 +25,6 @@ extern "C"{
    void splayEdgesGenerator(double **verts, const unsigned int sizeofVerts, unsigned int **edges, const unsigned sizeofEdges);
 }
 
+void testSplayEdgeGenerator();
+
 #endif // BLENDEROUTPUTS_H

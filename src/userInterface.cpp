@@ -87,7 +87,7 @@ extern "C"{
         std::ifstream surveyFile;
         //std::ofstream cavePlot;
 
-        std::string survey = "./aux/RKVSC_Survey_Notes.csv";
+        std::string survey = "/home/stuart/Documents/CaveSurvey/aux/RKVSC_Survey_Notes.csv";
 
         surveyFile.open(survey);
         // Check for sucessful file opening
@@ -108,11 +108,8 @@ extern "C"{
         //ROOT_SHOT->printShots();
         //ROOT_STN->printStations();
 		populateSplaysFromUDLR();
-	//	unsigned int Stns = numStns();
-	//	unsigned int numVerts = Stns*5;
-	//	unsigned int numEdges = Stns*4;
-		//splayEdgesGenerator(double verts[numVerts][3], unsigned int numVerts, unsigned int edges[numEdges][2], unsigned int numEdges);
 
+		testSplayEdgeGenerator();
         // populate the map data
 
         return 0;

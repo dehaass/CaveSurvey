@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jan  2 15:21:24 2022
+# Make data base, printed on Sun Jan  2 20:04:23 2022
 
 # Variables
 
@@ -23,7 +23,7 @@ SSH_AGENT_LAUNCHER = gnome-keyring
 # environment
 GJS_DEBUG_OUTPUT = stderr
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-5e91e679-487c-4e61-8564-fd972301c8c5.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-f5b3ad30-9755-4aa6-adf3-a3906ffe2a52.sock
 # environment
 VSCODE_CWD = /home/stuart
 # environment
@@ -81,6 +81,7 @@ APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 MFLAGS = -pqrR
 # environment
+ 
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # default
 .SHELLFLAGS := -c
@@ -101,13 +102,13 @@ ZSH = /home/stuart/.oh-my-zsh
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 67396
+VSCODE_PID = 3731
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/stuarts-big-boy:@/tmp/.ICE-unix/2106,unix/stuarts-big-boy:/tmp/.ICE-unix/2106
+SESSION_MANAGER = local/stuarts-big-boy:@/tmp/.ICE-unix/2111,unix/stuarts-big-boy:/tmp/.ICE-unix/2111
 # automatic
 *F = $(notdir $*)
 # environment
@@ -139,7 +140,6 @@ GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # environment
 SHLVL = 0
 # environment
- 
 MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
@@ -152,7 +152,7 @@ LANGUAGE = en_CA:en
 # automatic
 ^F = $(notdir $^)
 # environment
-INVOCATION_ID = 7cd99774522243cb91d56b85702d51b6
+INVOCATION_ID = 827e0884afa9405c8a59d9de0a891333
 # environment
 VSCODE_LOG_NATIVE = false
 # environment
@@ -192,11 +192,11 @@ GTK_MODULES = gail:atk-bridge
 # default
 MAKE_VERSION := 4.3
 # environment
-MANAGERPID = 1876
+MANAGERPID = 1871
 # makefile (from 'makefile', line 9)
 EXECUTABLE := CaveSurvey
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 67396
+GIO_LAUNCHED_DESKTOP_FILE_PID = 3731
 # makefile (from 'makefile', line 2)
 CXX_FLAGS := -std=c++17 -ggdb -fPIC -O2
 # environment
@@ -210,7 +210,7 @@ XDG_RUNTIME_DIR = /run/user/1000
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-JOURNAL_STREAM = 8:33787
+JOURNAL_STREAM = 8:26432
 # environment
 XDG_SESSION_CLASS = user
 # makefile (from 'makefile', line 8)
@@ -248,7 +248,7 @@ XDG_MENU_PREFIX = gnome-
 # environment
 GDMSESSION = ubuntu
 # variable set hash-table stats:
-# Load=118/1024=12%, Rehash=0, Collisions=10/160=6%
+# Load=118/1024=12%, Rehash=0, Collisions=11/169=7%
 
 # Pattern-specific Variable Values
 
@@ -257,9 +257,9 @@ GDMSESSION = ubuntu
 # Directories
 
 # src (device 66306, inode 14549978): 11 files, no impossibilities.
-# . (device 66306, inode 10751991): 18 files, no impossibilities.
+# . (device 66306, inode 10751991): 19 files, no impossibilities.
 
-# 29 files, no impossibilities in 2 directories.
+# 30 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -289,21 +289,21 @@ src/Shot.cpp:
 # Not a target:
 src/dataFun.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-02 13:47:44.873695701
+#  Last modified 2022-01-02 16:12:34.231463612
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 src/blenderOutputs.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-02 15:17:25.484225198
+#  Last modified 2022-01-02 19:48:13.540230231
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 src/Station.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-02 13:41:55.418998163
+#  Last modified 2022-01-02 16:24:20.03379769
 #  File has been updated.
 #  Successfully updated.
 
@@ -315,7 +315,7 @@ lib: bin/_PHD_Lib.so
 # Not a target:
 src/main.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-01 09:41:06.119362233
+#  Last modified 2022-01-02 18:02:40.62669696
 #  File has been updated.
 #  Successfully updated.
 
@@ -328,7 +328,7 @@ clean:
 
 bin/_PHD_Lib.so: src/Shot.cpp src/Splay.cpp src/Station.cpp src/blenderOutputs.cpp src/dataFun.cpp src/main.cpp src/surveyPlot.cpp src/svgMap.cpp src/userInterface.cpp
 #  Implicit rule search has not been done.
-#  Last modified 2022-01-02 15:21:09.626429247
+#  Last modified 2022-01-02 20:03:50.598410065
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'makefile', line 28):
@@ -337,7 +337,7 @@ bin/_PHD_Lib.so: src/Shot.cpp src/Splay.cpp src/Station.cpp src/blenderOutputs.c
 # Not a target:
 src/Splay.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-02 14:47:07.168979205
+#  Last modified 2022-01-02 16:08:53.177290121
 #  File has been updated.
 #  Successfully updated.
 
@@ -347,12 +347,14 @@ src/Splay.cpp:
 #  Modification time never checked.
 #  File has not been updated.
 
-all: bin/_PHD_Lib.so
+all: bin/_PHD_Lib.so bin/CaveSurvey
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
 
 run: clean all
 #  Implicit rule search has not been done.
@@ -365,14 +367,14 @@ run: clean all
 # Not a target:
 src/userInterface.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-02 15:21:08.410438948
+#  Last modified 2022-01-02 20:03:40.523050769
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-02 15:21:24.738308719
+#  Last modified 2022-01-02 20:04:09.389316766
 #  File has been updated.
 #  Successfully updated.
 
@@ -383,27 +385,54 @@ src/svgMap.cpp:
 #  File has been updated.
 #  Successfully updated.
 
-bin/CaveSurvey: src/Shot.cpp src/Splay.cpp src/Station.cpp src/blenderOutputs.cpp src/dataFun.cpp src/main.cpp src/surveyPlot.cpp src/svgMap.cpp src/userInterface.cpp
+# Not a target:
+.SUFFIXES:
 #  Implicit rule search has not been done.
+ 
 #  Modification time never checked.
 #  File has not been updated.
+
+bin/CaveSurvey: src/Shot.cpp src/Splay.cpp src/Station.cpp src/blenderOutputs.cpp src/dataFun.cpp src/main.cpp src/surveyPlot.cpp src/svgMap.cpp src/userInterface.cpp
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  Last modified 2022-01-02 19:49:02.995242684
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := bin/CaveSurvey
+# automatic
+# * := 
+# automatic
+# < := src/Shot.cpp
+# automatic
+# + := src/Shot.cpp src/Splay.cpp src/Station.cpp src/blenderOutputs.cpp src/dataFun.cpp src/main.cpp src/surveyPlot.cpp src/svgMap.cpp src/userInterface.cpp
+# automatic
+# % := 
+# automatic
+# ^ := src/Shot.cpp src/Splay.cpp src/Station.cpp src/blenderOutputs.cpp src/dataFun.cpp src/main.cpp src/surveyPlot.cpp src/svgMap.cpp src/userInterface.cpp
+# automatic
+# ? := src/userInterface.cpp
+# automatic
+# | := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=6/17=35%
 #  recipe to execute (from 'makefile', line 25):
 	$(CXX) $(CXX_FLAGS) -I$(INCLUDE) $^ -o $@ $(LIBRARIES)
 
 # files hash-table stats:
-# Load=19/1024=2%, Rehash=0, Collisions=1/56=2%
+# Load=19/1024=2%, Rehash=0, Collisions=1/58=2%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 47 / storage = 512 B / avg = 10 B
-# current buf: size = 8162 B / used = 512 B / count = 47 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 48 / storage = 522 B / avg = 10 B
+# current buf: size = 8162 B / used = 522 B / count = 48 / avg = 10 B
 
-# strcache performance: lookups = 76 / hit rate = 38%
+# strcache performance: lookups = 79 / hit rate = 39%
 # hash-table stats:
-# Load=47/8192=1%, Rehash=0, Collisions=0/76=0%
-# Finished Make data base on Sun Jan  2 15:21:24 2022
+# Load=48/8192=1%, Rehash=0, Collisions=0/79=0%
+# Finished Make data base on Sun Jan  2 20:04:23 2022
 
  

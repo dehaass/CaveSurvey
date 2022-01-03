@@ -2,20 +2,30 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "C/C++: g++ build active file",
+            "label": "C/C++: g++ build shared library",
             "command": "/usr/bin/g++",
             "args": [
+                //"/src/*.cpp",
                 "-std=c++17",
                 "-fPIC",
                 "-O2",
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
+                "${workspaceFolder}/src/*.cpp",
+                "${workspaceFolder}/include/*.h",
+                "-Idir",
+                "workspaceFolder/include",
+                //"${file}",
+                //"-I",
+                //"/include/",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${workspaceFolder}/bin/_PHD_Lib.so",
+                //"/bin/CaveSurvey",
+                "-shared"
             ],
             "options": {
-                "cwd": "${fileDirname}"
+                "cwd": "${workspaceFolder}",
+                //"cwd": "${fileDirname}"
             },
             "problemMatcher": [
                 "$gcc"
@@ -35,7 +45,7 @@
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
             "options": {
-                "cwd": "${fileDirname}"
+                "cwd": "${workspaceFolder}",
             },
             "problemMatcher": [
                 "$gcc"

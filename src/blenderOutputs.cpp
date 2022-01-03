@@ -70,25 +70,6 @@ extern "C"{
     }
 }
 
-extern "C"{
-    //Creates mesh data for cave walls from udlr station data and shots
-    void tunnelMesh(unsigned int **verts, unsigned int **edges, unsigned int **faces, const unsigned int numShots){
-        Shot* currShot = ROOT_SHOT;
-        for(unsigned int i = 0; i < numShots; i++){
-
-// Doesn't work. TODO
-            verts[i][0] = currShot->readFromStn()->getX();
-            verts[i][1] = currShot->readFromStn()->getY();
-            verts[i][2] = currShot->readFromStn()->getZ();
-
-            currShot = currShot->nextShot;
-            if(currShot == nullptr){
-                break;
-            }
-        }
-    }
-}
-
 
 extern "C"{
     // populates a list of vertices and edges for splay shots from all stations
@@ -98,29 +79,24 @@ extern "C"{
         double x, y, z, dx, dy, dz;
         std::vector<Splay*> tempSplayList;
 
-        unsigned int i, j, k = 0;
+        unsigned int i = 0;
+        unsigned int j = 0;
+        unsigned int k = 0;
 
         while( currStation != nullptr){
             currStation->print();
             currStation->readPos(&x, &y, &z);
-            cout << "It's gonna break here\n";
-            if(verts[0][0] == 1){
-                cout << "if true\n";
-            }else{
-                cout << "if not true\n";
-            }
-            cout << verts[0][0];
-            cout << "It broke here";
+            //cout << "It's gonna break here\n";
             verts[i][0] = x;
             verts[i][1] = y;
             verts[i][2] = z;
             i++;
-            if(i > sizeofVerts) break;
+            if(i >= sizeofVerts) break;
 
             splayList = currStation->getSplayList();
-            cout << "Didn't break\n";
-            for(j=0; j<splayList->size(); j++){
-                tempSplayList = *splayList;
+            tempSplayList = *splayList;
+            for(j=0; j<tempSplayList.size(); j++){
+                //tempSplayList = *splayList;
                 tempSplayList[j]->readDeltas(&dx, &dy, &dz);
                 verts[i][0] = x + dx;
                 verts[i][1] = y + dy;
@@ -128,13 +104,40 @@ extern "C"{
                 edges[k][0] = i-1-j;
                 edges[k][1] = i;
                 k++;
-                if(k > sizeofEdges) return;
+                if(k >= sizeofEdges) return;
                 i++;
-                if(i > sizeofVerts) return;
+                if(i >= sizeofVerts) return;
 
             }
 
             currStation = currStation->nextStation;
         }
     }
+}
+
+// Simulates the python script that allocates the memory for the splay list
+void testSplayEdgeGenerator(){
+    cout << "Begin testSplayEdgeGenerator\n";
+
+    unsigned int Stns = numStns();
+    unsigned int numVerts = Stns*5;
+    unsigned int numEdges = Stns*4;
+    //double verts[numVerts][3] = {0};
+    //double edges[numEdges][2] = {0};
+    static double** verts = new double*[numVerts];
+    for(unsigned int i = 0; i < numVerts; i++){
+        verts[i] = new double[3];
+        for(unsigned int j = 0; j < 3; j++){
+            verts[i][j] = 0;
+        }
+    }
+    static unsigned int** edges = new unsigned int*[numEdges];
+    for(unsigned int i = 0; i < numEdges; i++){
+        edges[i] = new unsigned int[2];
+        for(unsigned int j = 0; j < 2; j++){
+            edges[i][j] = 0;
+        }
+    }
+    cout << verts[0][0] << "\n";
+    splayEdgesGenerator(verts, numVerts, edges, numEdges);
 }

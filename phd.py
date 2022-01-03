@@ -115,6 +115,7 @@ if __name__ == '__main__':
     #print(stnList[1])
     shotList = ShotList()
     #print(shotList)
+    print("OK, lets see if this breaks!")
     verts, edges = splayList()
     print (verts)
     print (edges)
