@@ -88,3 +88,53 @@ extern "C"{
         }
     }
 }
+
+
+extern "C"{
+    // populates a list of vertices and edges for splay shots from all stations
+    void splayEdgesGenerator(double **verts, const unsigned int sizeofVerts, unsigned int **edges, const unsigned sizeofEdges){
+        Station* currStation = ROOT_STN;
+        std::vector<Splay*>* splayList;
+        double x, y, z, dx, dy, dz;
+        std::vector<Splay*> tempSplayList;
+
+        unsigned int i, j, k = 0;
+
+        while( currStation != nullptr){
+            currStation->print();
+            currStation->readPos(&x, &y, &z);
+            cout << "It's gonna break here\n";
+            if(verts[0][0] == 1){
+                cout << "if true\n";
+            }else{
+                cout << "if not true\n";
+            }
+            cout << verts[0][0];
+            cout << "It broke here";
+            verts[i][0] = x;
+            verts[i][1] = y;
+            verts[i][2] = z;
+            i++;
+            if(i > sizeofVerts) break;
+
+            splayList = currStation->getSplayList();
+            cout << "Didn't break\n";
+            for(j=0; j<splayList->size(); j++){
+                tempSplayList = *splayList;
+                tempSplayList[j]->readDeltas(&dx, &dy, &dz);
+                verts[i][0] = x + dx;
+                verts[i][1] = y + dy;
+                verts[i][2] = z + dz;
+                edges[k][0] = i-1-j;
+                edges[k][1] = i;
+                k++;
+                if(k > sizeofEdges) return;
+                i++;
+                if(i > sizeofVerts) return;
+
+            }
+
+            currStation = currStation->nextStation;
+        }
+    }
+}

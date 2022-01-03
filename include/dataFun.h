@@ -30,9 +30,6 @@ int populateStations(std::ifstream&);
 // Read through file and input Shots in order
 int populateShots(std::ifstream&);
 
-// Read through therion output file and populate stations, shots, and splays
-int populateData(std::ifstream&);
-
 void populateSplaysFromUDLR();
 
 void splaysFromUDLR(std::vector<Splay>& splays, Station *stn, Shot *fromShot, Shot *toShot);

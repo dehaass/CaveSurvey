@@ -28,3 +28,9 @@ void Splay::print(){
     cout << " dx: " << dx << " dy: " << dy << " dz: " << dz << endl;
 } //end print
 
+// gets xyz values of the splay
+void Splay::readDeltas(double *x, double *y, double *z){
+    *x = dx;
+    *y = dy;
+    *z = dz;
+}

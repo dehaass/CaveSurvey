@@ -6,6 +6,7 @@
 #include "dataFun.h"
 #include "surveyPlot.h"
 #include "svgMap.h"
+#include "blenderoutputs.h"
 
 using std::cout;
 using std::cin;
@@ -20,10 +21,6 @@ extern "C"{
 
 extern "C"{
     int processSurvey();
-}
-
-extern "C"{
-    int processTherionOutput();
 }
 
 // Read survey from '*.csv' file

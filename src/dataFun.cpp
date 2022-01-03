@@ -69,20 +69,7 @@ int populateShots(std::ifstream& surveyFile){
 	return 0;
 }// populateShots
 
-
-// Read through therion output file and populate stations, shots, and splays
-int populateData(std::ifstream& surveyFile){
-
-	std::string dumb, fromID, toID, dist, bear, clino, id, u, d, l, r;
-	
-	Station* currStn = ROOT_STN;
-	Shot* currShot = ROOT_SHOT;
-	Splay* currSplay = ROOT_SPLAY;
-
-
-	return 0;
-}// populateData
-
+// Goes through the stations and populates the splays from the UDLR data
 void populateSplaysFromUDLR(){
 	Station* currStn = ROOT_STN;
 	Shot* currShot = ROOT_SHOT;
@@ -109,7 +96,7 @@ void populateSplaysFromUDLR(){
 		if(tempFromShot != nullptr || tempToShot != nullptr){
 			splaysFromUDLR(splays, currStn, tempFromShot, tempToShot);
 		}
-		currStn->print();
+		//currStn->print();
 		tempFromShot = nullptr;
 		tempToShot = nullptr;
 
@@ -120,10 +107,10 @@ void populateSplaysFromUDLR(){
 }
 
 // Uses a station and a from or to shot to convert UDLR data into splay shots
+void splaysFromUDLR(std::vector<Splay>& splays, Station *stn, Shot *fromShot, Shot *toShot){
 // Left and right station data has to be oriented perpendicular to the cave passage
 // Conventionally, left and right distances are taken while facing forward to the next station
 // Up and down distances are conventionally pure z-axis distances so don't need to be oriented
-void splaysFromUDLR(std::vector<Splay>& splays, Station *stn, Shot *fromShot, Shot *toShot){
 /*          |
  *    -x +y | +x +y
  *     -----|-----

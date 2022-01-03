@@ -27,6 +27,10 @@ _ShotList = _libPHD.ShotList
 _ShotList.argtypes = [_uintpp, ctypes.c_uint]
 _ShotList.restype = None
 
+_splayEdgesGenerator = _libPHD.splayEdgesGenerator
+_splayEdgesGenerator.argtypes = [_doublepp, ctypes.c_uint, _uintpp, ctypes.c_uint]
+_splayEdgesGenerator.restype = None
+
 def processSurvey():
     """Runs the PHD algorithm on the loaded survey"""
 
@@ -82,6 +86,28 @@ def ShotList():
         shotList[i][1] -= 1
     return shotList
 
+def splayList():
+
+    Stns = numStns()
+
+    # Allocate memory for the array of pointers
+    # I do this from python so python knows how to free the memory
+    numVerts = Stns*5
+    verts = np.zeros([numVerts, 3], dtype=np.float64)
+    #print(verts)
+    vertsPP = (verts.__array_interface__['data'][0] 
+        + np.arange(verts.shape[0])*verts.strides[0]).astype(np.uintp)
+
+    numEdges = Stns*4
+    edges = np.zeros([numEdges, 2], dtype=np.uintc)
+
+    edgesPP = (edges.__array_interface__['data'][0] 
+        + np.arange(edges.shape[0])*edges.strides[0]).astype(np.uintp)
+
+    _splayEdgesGenerator(vertsPP, ctypes.c_uint(numVerts), edgesPP, ctypes.c_uint(numEdges))
+    return verts, edges
+
+
 if __name__ == '__main__':
     processSurvey()
     #print(numStns())
@@ -89,3 +115,6 @@ if __name__ == '__main__':
     #print(stnList[1])
     shotList = ShotList()
     #print(shotList)
+    verts, edges = splayList()
+    print (verts)
+    print (edges)

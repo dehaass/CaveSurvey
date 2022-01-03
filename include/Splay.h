@@ -45,6 +45,7 @@ class Splay{
     // Calulates the absolute cartesian coordinates of the shot
     void calcAbsCoords(double*, double*, double*);
 
+    //void readDeltas(double &x, double &y, double &z);
 
 };//end class Splay
 

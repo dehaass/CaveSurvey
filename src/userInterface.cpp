@@ -108,41 +108,16 @@ extern "C"{
         //ROOT_SHOT->printShots();
         //ROOT_STN->printStations();
 		populateSplaysFromUDLR();
+	//	unsigned int Stns = numStns();
+	//	unsigned int numVerts = Stns*5;
+	//	unsigned int numEdges = Stns*4;
+		//splayEdgesGenerator(double verts[numVerts][3], unsigned int numVerts, unsigned int edges[numEdges][2], unsigned int numEdges);
 
         // populate the map data
 
         return 0;
 
     }// stnloc
-}
-
-extern "C"{
-    int processTherionOutput(){
-
-        std::ifstream surveyFile;
-        //std::ofstream cavePlot;
-
-        std::string survey = "./aux/Friend_Elevator_th_output.csv";
-
-        surveyFile.open(survey);
-        // Check for sucessful file opening
-        if( !surveyFile.good() ){
-            cout << "surveyFile is not good";
-            return 1;
-        }
-        populateData(surveyFile);
-		// Need to close and reopen to reset the file pointer
-        surveyFile.close();
-
-        // Populate the station relative positions
-        ROOT_SHOT->populatePos();
-        //ROOT_STN->printStations();
-        //ROOT_SHOT->printShots();
-        //ROOT_STN->printStations();
-
-        return 0;
-
-    }// populateData
 }
 
 // Read survey from '*.csv' file
